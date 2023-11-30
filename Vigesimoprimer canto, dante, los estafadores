@@ -1,1 +1,735 @@
 
+async function enviarScript(scriptText){
+	const lines = scriptText.split(/[\n\t]+/).map(line => line.trim()).filter(line => line);
+	main = document.querySelector("#main"),
+	textarea = main.querySelector(`div[contenteditable="true"]`)
+	
+	if(!textarea) throw new Error("Não há uma conversa aberta")
+	
+	for(const line of lines){
+		console.log(line)
+	
+		textarea.focus();
+		document.execCommand('insertText', false, line);
+		textarea.dispatchEvent(new Event('change', {bubbles: true}));
+	
+		setTimeout(() => {
+			(main.querySelector(`[data-testid="send"]`) || main.querySelector(`[data-icon="send"]`)).click();
+		}, 100);
+		
+		if(lines.indexOf(line) !== lines.length - 1) await new Promise(resolve => setTimeout(resolve, 250));
+	}
+	
+	return lines.length;
+}
+
+enviarScript(`
+
+APRENDE A RESPETAR EL TIEMPO Y DINERO DE LAS PERSONAS, ESTAFADOR, ARDERÁS. PONTE A TRABAJAR
+TE DEJO CAPÍTULO DE EL INFIERNO DE DANTE, LO QUE LES PASARÁ A PERSONAS CÓMO TÚ, ARDERÁN.
+
+Estafadores, Barateros y Corruptos.
+
+Inmersos en pez hirviente.
+
+Se llega al colmo del arco sobre el quinto foso, el símil de la pez hirviente, Virgilio que pone en guardia a Dante al ver venir por la escollera a un diablo que trae a un condenado en hombros, éste es arrojado a la pez y aquél se vuelve a buscar a otros, bajo el arco otros demonios lo castigan, Virgilio esconde a Dante y avanza hasta el siguiente arcén, se negocia el paso, se allega Dante y es amenazado, pero Malacoda les provee una grotesca y temible compañía y siguen, a la vera del arcén.
+
+
+
+Cosí di ponte in ponte, altro parlando
+
+1		
+Así de un puente en otro, hablando todavía
+
+che la mia comedía cantar non cura,
+
+2		
+de lo que mi comedia no pretende cantar,
+
+venimmo; e tenavamo ‘l colmo, quando
+
+3		
+anduvimos; y llegábamos a la clave, cuando
+
+restammo per veder l’altra fessura
+
+4		
+nos detuvimos para ver la siguiente hondonada
+
+di Malebolge e li altri pianti vani;
+
+5		
+del Malebolge y sus respectivos llantos infructuosos;
+
+e vidila mirabilmente oscura.
+
+6		
+y la vi prodigiosamente oscura.
+
+Quale nel arzanà de’ Viniziani
+
+7		
+Como en el astillero de los venecianos
+
+bolle l’inverno la tenace pece
+
+8		
+hierve durante el invierno la viscosa pez
+
+a rimpalmare i legni lor non sani,
+
+9		
+para volver a imprimar sus averiados leños,
+
+ché navicar non ponno – in quella vece
+
+10		
+dado que no pueden navegar – en su lugar
+
+chi fa suo legno novo e chi ristoppa
+
+11		
+hay quien construye su nuevo navío y quien obtura
+
+le coste a quel che piú viaggi fece;
+
+12		
+con estopa el casco de aquel que hizo más viajes;
+
+chi ribatte da proda e chi da poppa;
+
+13		
+quien remacha en proa y quien en popa;
+
+altri fa remi e altri volge sarte;
+
+14		
+otros hacen remos y otros trenzan cuerdas náuticas;
+
+chi terzeruolo e artimon rintoppa -:
+
+15		
+quien remienda la vela media y la menor -;
+
+tal, non per foco ma per divin’ arte,
+
+16		
+así, no por fuego sino por divina inspiración,
+
+bollia là giuso una pegola spessa,
+
+17		
+hervía allá abajo un pegote espeso
+
+che ‘nviscava la ripa d’ogne parte.
+
+18		
+que impregnaba el lateral en todas partes.
+
+I’ vedea lei, ma non vedea in essa
+
+19		
+Yo lo observaba, pero no veía en él
+
+mai che le bolle che ‘l bollor levava,
+
+20		
+más que las burbujas que levantaba el hervor,
+
+e gonfiar tutta, e riseder compressa.
+
+21		
+su hincharse todo y su volver a nivelarse.
+
+Mentr’ io là giú fisamente mirava,
+
+22		
+Mientras miraba fijamente hacia allá abajo,
+
+lo duca mio, dicendo ́ ́Guarda, guarda! ́ ́,
+
+23		
+mi guía, diciendo ́ ́Guarda, guarda… ́ ́,
+
+mi trasse a sé del loco dov’ io stava.
+
+24		
+me atrajo, desde el puesto en el que estaba, hacia sí.
+
+Allor mi volsi come l’uom cui tarda
+
+25		
+Entonces me volví como aquel que ansía
+
+di veder quel che li convien fuggire
+
+26		
+ver aquello de lo que necesita huir
+
+e cui paura súbita sgagliarda,
+
+27		
+y al que un miedo repentino lo acobarda,
+
+che, per veder, non indugia ‘l partire:
+
+28		
+que no por ver demora en escapar:
+
+e vidi dietro a noi un diavol nero
+
+29		
+y vi detrás nuestro a un diablo negro
+
+correndo su per lo scoglio venire.
+
+30		
+venir corriendo por sobre la escollera.
+
+Ahi quant’elli era ne l’aspetto fero!
+
+31		
+Qué feroz aspecto tenía…
+
+E quanto mi parea ne l’atto acerbo,
+
+32		
+Y cuán acerba me resultaba su actitud,
+
+con l’ali aperte e sovra i piè leggero!
+
+33		
+con las alas abiertas y ligero de pies…
+
+L’omero suo, ch’era aguto e superbo,
+
+34		
+Uno de sus hombros, que era realzado y anguloso,
+
+carcava un peccator con ambo l’anche,
+
+35		
+cargaba con ambas ancas de un pecador,
+
+e quei tenea de’ piè ghermito ‘l nerbo.
+
+36		
+al que él tenía aferrado por el tendón del pie.
+
+Del nostro ponte disse: ́ ́O Malebranche,
+
+37		
+Desde nuestro puente dijo: ́ ́Ey, Malebranche,
+
+ecco un de li anzian di Santa Zita!
+
+38		
+acá hay uno de los magistrados de Santa Zita…
+
+Mettetel sotto, ch’i’ torno per anche
+
+39		
+Ustedes sumérjanlo, que yo vuelvo de nuevo
+
+a quella terra, che n’è ben fornita:
+
+40		
+a aquella tierra, que está bien provista de ellos:
+
+ogn’ uom v’è barattier, fuor che Bonturo;
+
+41		
+allá todo hombre es corrupto, salvo Bonturo;
+
+del no, per li denar, vi si fa ita ́ ́.
+
+42		
+por dinero, ahí se hace de un no un ita ́ ́.
+
+Là giú ‘l buttò, e per lo scoglio duro
+
+43		
+Lo echó allá abajo, y se volvió por la escollera
+
+si volse; e mai non fu mastino sciolto
+
+44		
+fatigosa; no fue soltado nunca un mastín
+
+con tanta fretta a seguitar lo furo.
+
+45		
+con semejante apuro por acechar al ladrón.
+
+Quel s’attuffò, e tornò sú convolto;
+
+46		
+Aquél se hundió, y volvió a emerger pringado;
+
+ma i demon che del ponte avean coperchio,
+
+47		
+pero los demonios encubiertos bajo el puente
+
+gridar: ́ ́Qui non ha loco il Santo Volto!
+
+48		
+gritaron: ́ ́Acá no tiene sitio el Santo Rostro…
+
+Qui si nuota altrimenti che nel Serchio!
+
+49		
+Acá se nada de otro modo que en el Serchio…
+
+Però se tu non vuo’ di nostri graffi,
+
+50		
+Así que si no querés de nuestros garfios,
+
+non far sopra la pegola soverchio ́ ́.
+
+51		
+no te asomes por encima de la pez ́ ́.
+
+Poi l’addentar con piú di cento raffi,
+
+52		
+Después de ensartarlo con más de cien ganchos,
+
+disser: ́ ́Coverto convien che qui balli,
+
+53		
+dijeron: ́ ́Acá tenés que bailar sumergido,
+
+sí che, se puoi, nascosamente accaffi ́ ́.
+
+54		
+así, si podés, rapiñás a escondidas ́ ́.
+
+Non altrimenti i cuoci a’ lor vassalli
+
+55		
+No de otro modo los cocineros a sus pinches
+
+fanno attuffare in mezzo la caldaia
+
+56		
+les ordenan hundir la carne en medio del caldero
+
+la carne con li uncin, perché non galli.
+
+57		
+con los trinches, para que no flote.
+
+Lo buon maestro ́ ́Acciò che non si paia
+
+58		
+El buen maestro ́ ́Para que no adviertan
+
+che tu ci sia ́ ́, mi disse, ́ ́giú t’acquatta
+
+59		
+que vos estás acá ́ ́, me dijo, ́ ́acovacháte
+
+dopo uno scheggio, ch’alcun schermo t’aia;
+
+60		
+tras algún realce que te ofrezca protección;
+
+e per nulla offension che mi sia fatta,
+
+61		
+y no temas por ninguna ofensa
+
+non temer tu, ch’i’ ho le cose conte,
+
+62		
+que se me haga, que tengo sabido el asunto
+
+per ch’altra volta fui a tal baratta ́ ́.
+
+63		
+porque la otra vez estuve en disputa parecida ́ ́.
+
+Poscia passò di là dal co del ponte,
+
+64		
+Después se encaminó al extremo opuesto del puente,
+
+e com’ el giunse in su la ripa sesta,
+
+65		
+y ni bien se encontró arriba del sexto arcén
+
+mestier li fu d’aver sicura fronte.
+
+66		
+le fue preciso conservar un temple imperturbable.
+
+Con quel furore e con quella tempesta
+
+67		
+Con igual furia y con la misma vehemencia
+
+ch’escono i cani a dosso al poverello
+
+68		
+con las que los perros se abalanzan contra el mendigo
+
+che di súbito chiede ove s’arresta,
+
+69		
+que pide desde donde fue obligado a detenerse,
+
+usciron quei di sotto al ponticello,
+
+70		
+salieron aquellos de abajo del puentecito
+
+e volser contra lui tutt’ i runcigli;
+
+71		
+y dirigieron todos los arpones contra él,
+
+ma el gridò: ́ ́Nessun di voi sia fello!
+
+72		
+quien les gritó: ́ ́Ninguno de ustedes sea ruin…
+
+Innanzi che l’uncin vostro mi pigli,
+
+73		
+Antes de que me atraviese uno de sus trinches
+
+traggasi avante l’un di voi che m’oda,
+
+74		
+adelántese alguno de ustedes que me oiga,
+
+e poi d’arruncigliarmi si consigli ́ ́.
+
+75		
+y decídase después si arponearme ́ ́.
+
+Tutti gridaron: ́ ́Vada Malacoda! ́ ́;
+
+76		
+́ ́Que vaya Malacoda… ́ ́, gritaron todos;
+
+per ch’un si mosse – e li altri stetter fermi –
+
+77		
+a lo que uno se movió – y los otros permanecieron quietos –
+
+e venne a lui dicendo: ́ ́Che li aprodda? ́ ́.
+
+78		
+y fue hasta él diciendo: ́ ́¿De qué le sirve? ́ ́.
+
+́ ́Credi tu, Malacoda, qui vedermi
+
+79		
+́ ́¿Vos te creés, Malacoda, que me ves
+
+esser venuto ́ ́, disse ‘l mio maestro,
+
+80		
+llegar hasta acá ́ ́, le dijo mi maestro,
+
+́ ́sicuro già da tutti vostri schermi,
+
+81		
+́ ́a salvo ya de todas sus obstrucciones,
+
+sanza voler divino e fato destro?
+
+82		
+sin la voluntad divina y un hado favorable?
+
+Lascian’ andar, ché nel cielo è voluto
+
+83		
+Déjennos ir, que en el cielo se quiere
+
+ch’i’ mostri altrui questo cammin silvestro ́ ́.
+
+84		
+que le muestre a otro este áspero camino ́ ́.
+
+Allor li fu l’orgoglio sí cadutto,
+
+85		
+Entonces se le resintió tanto el orgullo
+
+ch’e’ si lasciò cascar l’uncino a’ piedi,
+
+86		
+que dejó caer el trinche a sus pies,
+
+e disse a li altri: ́ ́Omai non sia feruto ́ ́.
+
+87		
+y le dijo a los demás: ́ ́Ya no se lo hiera ́ ́.
+
+E ‘l duca mio a me: ́ ́O tu che siedi
+
+88		
+Y mi guía a mí: ́ ́Vos que estás
+
+tra li scheggion del ponte quatto quatto,
+
+89		
+agazapado atrás de alguna irregularidad del puente,
+
+sicuramente omai a me ti riedi ́ ́.
+
+90		
+vení ahora hacia mí con total seguridad ́ ́.
+
+Per ch’io mi mossi e a lui venni ratto;
+
+91		
+Por lo que me moví y fui a él con rapidez;
+
+e i diavoli si fecer tutti avanti,
+
+92		
+y se adelantaron también todos los diablos,
+
+sí ch’io temetti ch’ei tenesser patto;
+
+93		
+tanto que desconfié que sostuvieran lo pactado;
+
+cosí vid’ io già temer li fanti
+
+94		
+ya vi yo temer así a la soldadesca
+
+ch’uscivan patteggiati di Caprona,
+
+95		
+que salía amnistiada de Caprona
+
+veggendo sé tra nemici cotanti.
+
+96		
+viéndose entre numerosos enemigos.
+
+I’ m’accostai con tutta la persona
+
+97		
+Yo me adosé de cuerpo entero
+
+lungo ‘l mio duca, e non torceva li occhi
+
+98		
+a mi guía, y no sacaba la vista
+
+da la sembianza lor ch’era non buona.
+
+99		
+de ellos, cuyo aspecto no era tranquilizador.
+
+Ei chinavan li raffi e ́ ́Vuo’ che ‘l tocchi ́ ́,
+
+100		
+Esgrimían sus garfios y ́ ́¿Querés que lo tantee ́ ́,
+
+diceva l’un con l’altro, ́ ́in sul groppone? ́ ́.
+
+101		
+decía uno con otro, ́ ́por atrás? ́ ́.
+
+E rispondien: ́ ́Sí, fa che gliel’ accocchi ́ ́.
+
+102		
+Y respondían: ́ ́Sí, hacé que se le hunda ́ ́.
+
+Ma quel demonio che tenea sermone
+
+103		
+Pero el demonio aquel que venía hablando
+
+col duca mio, si volse tutto presto
+
+104		
+con mi guía, enseguida se dio vuelta
+
+e disse: ́ ́Posa, posa, Scarmiglione! ́ ́.
+
+105		
+y dijo: ́ ́Quieto, quieto, Scarmiglione… ́ ́.
+
+Poi disse a noi: ́ ́Piú oltre andar per questo
+
+106		
+Después nos dijo: ́ ́No se puede ir más allá
+
+iscoglio non si puo, però che giace
+
+107		
+por esta escollera, ya que su sexto arco
+
+por esta escollera, ya que su sexto arco
+
+108		
+descansa en el fondo hecho pedazos.
+
+E se l’andare avante pur vi piace,
+
+109		
+Y si aún así quieren seguir adelante,
+
+andatevene su per questa grotta;
+
+110		
+váyanse por esta escarpadura;
+
+presto è un altro scoglio che via fase.
+
+111		
+cerca hay otra escollera que da paso.
+
+Ier, piú oltre cinqu’ ore che quest’ otta,
+
+112		
+Ayer, unas cinco horas más tarde que la actual,
+
+mille dugento con sessanta sei
+
+113		
+se cumplieron mil doscientos sesenta y seis años
+
+anni compié che qui la via fu rotta.
+
+114		
+desde que colapsó la vía en este punto.
+
+Io mando verso là di questi miei
+
+115		
+Envío a varios de estos míos para allá
+
+a riguardar s’alcun se ne sciorina;
+
+116		
+a vigilar si alguno se expone al aire;
+
+gite con lor, che non saranno rei ́ ́.
+
+117		
+vayan con ellos, que no van a lastimarlos ́ ́.
+
+́ ́Tra’ti avante, Alichino, e Calcabrina ́ ́,
+
+118		
+́ ́Adelántese Alichino, y Calcabrina ́ ́,
+
+cominció elli a dire, ́ ́e tu, Cagnazzo;
+
+119		
+empezó a organizar él, ́ ́y vos, Cagnazzo;
+
+e Barbariccia guidi la decina.
+
+120		
+y que Barbariccia guíe a la decena.
+
+Libicocco vegn’ oltre e Draghignazzo,
+
+121		
+Vengan además Libicocco y Draghignazzo,
+
+Ciriatto sannuto e Grafiacane
+
+122		
+el encolmillado Ciriatto y Grafiacane
+
+e Farfarello e Rubicante pazzo.
+
+123		
+y Farfarello y el revoltoso Rubicante.
+
+Cercate ‘ntorno le boglienti pane;
+
+124		
+Indaguen en torno a la pez hirviente;
+
+costor sien salvi infino a l’altro scheggio
+
+125		
+y éstos que lleguen salvos a la próxima escollera
+
+che tutto intero va sovra le tane ́ ́.
+
+126		
+que se tiende íntegra sobre los fosos ́ ́.
+
+́ ́Omè, maestro, che è quel ch’i’ veggio? ́ ́,
+
+127		
+́ ́Ay de mí, maestro, ¿qué es lo que veo? ́ ́,
+
+diss’io, ́ ́Deh, sanza scorta andianci soli,
+
+128		
+dije yo, ́ ́Vayamos sin escolta, solos,
+
+se tu sa’ ir; ch’i’ per me non la cheggio.
+
+129		
+si vos sabés ir; que por mí no la requiero.
+
+Se tu se’ sí accorto come suoli,
+
+130		
+Si sos tan sensato como solés,
+
+non vedi tu ch’e’ digrignan li denti
+
+131		
+¿no ves que rechinan los dientes
+
+e con le ciglia ne minaccian duoli? ́ ́.
+
+132		
+y con las miradas amenazan hacernos daño? ́ ́.
+
+Ed elli a me: ́ ́Non vo’ che tu paventi;
+
+133		
+Y él a mí: ́ ́No quiero que te atemorices;
+
+lasciali digrignar pur a lor seno,
+
+134		
+dejálos rechinar cuanto se les dé la gana,
+
+ch’e’ fanno ciò per li lessi dolenti ́ ́.
+
+135		
+que hacen eso por los desgraciados que se escaldan ́ ́.
+
+Per l’argine sinistro volta dienno;
+
+136		
+Dieron vuelta a izquierda por el arcén;
+
+ma prima avea ciascun la lingua stretta
+
+137		
+pero antes cada uno se había apretado la lengua
+
+coi denti, verso lor duca, per cenno;
+
+138		
+con los dientes en señal hacia su jefe;
+
+ed elli avea del cul fatto trombetta.
+
+139		
+y éste había hecho de su culo una trompeta.
+APRENDE A RESPETAR EL TIEMPO Y DINERO DE LAS PERSONAS, ESTAFADOR, ARDERÁS. PONTE A TRABAJAR
+
+`).then(e => console.log(`Código finalizado, ${e} mensagens enviadas`)).catch(console.error)
